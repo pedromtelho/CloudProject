@@ -1,0 +1,67 @@
+#!/usr/bin/env python3
+import click
+import requests
+from datetime import datetime
+import json
+
+URL_SERVER = 'my-lb-1055407911.us-east-1.elb.amazonaws.com'
+URL_COMPLETED = "http://"+URL_SERVER+":8080/tasks"
+
+
+@click.group()
+def pedropmt():
+    """
+    CRUD (aluno: Pedro Paulo Telho)\n
+    Crie, liste, delete e atualize suas tarefas!\n
+
+
+    """
+
+
+@pedropmt.command()
+def get_tasks():
+    """List all tasks"""
+    response = requests.get(URL_COMPLETED+"/tasks")
+    print(json.dumps(json.loads(response.text), indent=4, sort_keys=True))
+
+
+@pedropmt.command('post')
+@click.argument('title_arg', metavar='<title>')
+@click.argument('description_arg', metavar='<description>')
+def post_tasks(title_arg, description_arg):
+    """<titulo> <descricao>"""
+    payload = {
+        "title": title_arg,
+        "pub_date": str(datetime.now()),
+        "description": description_arg
+    }
+    response = requests.post(URL_COMPLETED+"/create", data=json.dumps(payload))
+    print((response.content).decode('utf-8'))
+
+
+@pedropmt.command('delete')
+@click.argument('id', metavar='<id>')
+def delete(id):
+    """<id>"""
+    response = requests.delete(URL_COMPLETED+"/delete/"+id)
+    print((response.content).decode('utf-8'))
+
+
+@pedropmt.command('update')
+@click.argument('id', metavar='<id>')
+@click.argument('title_arg', metavar='<title>')
+@click.argument('description_arg', metavar='<description>')
+def update(id, title_arg, description_arg):
+    """<id> <titulo> <descricao>"""
+    payload = {
+        "title": title_arg,
+        "pub_date": str(datetime.now()),
+        "description": description_arg
+    }
+    response = requests.patch(URL_COMPLETED+"/update/" +
+                              id, data=json.dumps(payload))
+    print((response.content).decode('utf-8'))
+
+
+if __name__ == '__main__':
+    pedropmt()
