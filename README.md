@@ -1,18 +1,18 @@
 # CloudProject
 Aluno: Pedro Paulo Mendonça Telho
 
-<br/>
+
 ### Baixar dependências
 ```bash
 pip install -r requirements.txt
 ```
-<br/>
+<br />
 ### Rodando o script
 ```bash
 python3 main.py
 ```
 
-<br/>
+<br />
 ### Utilizando os serviços
 #### Comandos:
 <ul>
