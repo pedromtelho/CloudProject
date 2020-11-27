@@ -6,13 +6,13 @@ Aluno: Pedro Paulo Mendonça Telho
 ```bash
 pip install -r requirements.txt
 ```
-<br />
+
 ### Rodando o script
 ```bash
 python3 main.py
 ```
 
-<br />
+
 ### Utilizando os serviços
 #### Comandos:
 <ul>
