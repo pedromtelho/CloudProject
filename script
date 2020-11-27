@@ -4,7 +4,7 @@ import requests
 from datetime import datetime
 import json
 
-URL_SERVER = 'my-lb-1055407911.us-east-1.elb.amazonaws.com'
+URL_SERVER = 'my-lb-172021508.us-east-1.elb.amazonaws.com'
 URL_COMPLETED = "http://"+URL_SERVER+":8080/tasks"
 
 

@@ -96,7 +96,7 @@ a_file.writelines(list_of_lines)
 a_file.close()
 
 print("Status - OK")
-target_group_obj = lb.create_target_group(target_group_name, nv_vpc_ids[0])
+target_group_obj = lb.create_target_group(target_group_name, nv_vpc_ids[0], elb_arn)
 target_groups_arns = [target['TargetGroupArn'] for target in target_group_obj['TargetGroups']]
 
 targets_instances_list = [{'Id': instance.id} for instance in ec2_id_north_virginia]

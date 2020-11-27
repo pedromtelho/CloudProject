@@ -16,8 +16,12 @@ class LoadBalancer():
     def create_listener(self, elb_arn, target_group_arn):
         return self.elb.create_listener(LoadBalancerArn=elb_arn, Protocol='HTTP', Port=8080, DefaultActions=[{'Type': 'forward', 'TargetGroupArn': target_group_arn,},],)
 
-    def create_target_group(self, name, vpc_id):
+    def create_target_group(self, name, vpc_id, elb_arn):
         response = self.elb.describe_target_groups()
+        response_listeners = self.elb.describe_listeners(LoadBalancerArn=elb_arn)
+        if response_listeners['Listeners']:
+            for listener in response_listeners['Listeners']:
+                self.elb.delete_listener(ListenerArn=listener['ListenerArn'])
         if response['TargetGroups']:
             for t_group in response['TargetGroups']:
                 if t_group['TargetGroupName'] == name:
