@@ -1,5 +1,4 @@
 # CloudProject
-Pedro Paulo Mendonça Telho
 
 ORM multi-cloud system with Load Balancer and Autoscalling.
 1. Comunication via REST API
