@@ -9,24 +9,24 @@ ORM multi-cloud system with Load Balancer and Autoscalling.
 5. Automatic implementation script 
 
 
-### Baixar dependências
+### Download dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### Rodando o script
+### Running the script
 ```bash
 python3 main.py
 ```
 
 
-### Utilizando os serviços
-#### Comandos:
+### Client side service
+#### Commands:
 <ul>
-  <li>get-tasks: lista as tasks</li>
-  <li>post: criar nova task</li>
-  <li>update: atualizar task</li>
-  <li>delete: deletar task</li>
+  <li>get-tasks: list tasks</li>
+  <li>post: create a new task</li>
+  <li>update: update task</li>
+  <li>delete: delete task</li>
 </ul>
 
 ```bash
